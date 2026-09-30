@@ -1,0 +1,45 @@
+name: Daily Update Edgetunnel Proxies
+
+on:
+  schedule:
+    # 每天北京时间 08:00 (即 UTC 时间 00:00) 自动定时执行
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 允许在 GitHub Actions 页面手动点击 "Run workflow" 随时触发
+
+jobs:
+  update-proxies:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 必须具有写入权限以 commit/push 到仓库
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch and Check Proxies
+        env:
+          CF_DOMAIN: "ladder.easedays.com" # 可在此修改为你的优选域名或反代域名
+          COUNT_PER_COUNTRY: 3             # 每个地区保留节点数量 (TW, SG, HK, JP, US)
+          MAX_WORKERS: 6                   # 并发测试数
+          CHECK_TIMEOUT: 10                # 单个测试超时时间(秒)
+        run: |
+          node scripts/update_proxies.js
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add proxies.txt
+          if git diff --staged --quiet; then
+            echo "没有检测到代理变化，跳过提交。"
+          else
+            git commit -m "chore: 每日自动更新优选代理 $(date -u +'%Y-%m-%d %H:%M:%S UTC') [skip ci]"
+            git push
+          fi
