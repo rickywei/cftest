@@ -5,6 +5,11 @@ on:
     # 每天北京时间 08:00 (即 UTC 时间 00:00) 自动定时执行
     - cron: '0 0 * * *'
   workflow_dispatch: # 允许在 GitHub Actions 页面手动点击 "Run workflow" 随时触发
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/**'
 
 jobs:
   update-proxies:
