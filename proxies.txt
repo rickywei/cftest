@@ -1,16 +1,16 @@
-# Edgetunnel 优选节点列表 - 自动生成于 2026-09-30T15:29:26.259Z
+# Edgetunnel 优选节点列表 - 自动生成于 2026-09-30T15:43:13.661Z
 ladder.easedays.com#TW 链式HTTPS代理$https://114.33.6.158:443
 ladder.easedays.com#TW 链式HTTPS代理$https://211.72.236.159:443
-ladder.easedays.com#TW 链式HTTPS代理$https://47.243.181.85:42532
-ladder.easedays.com#SG 链式HTTPS代理$https://47.129.55.159:443
-ladder.easedays.com#SG 链式HTTPS代理$https://165.22.60.108:443
+ladder.easedays.com#TW 链式HTTPS代理$https://107.167.191.95:8443
 ladder.easedays.com#SG 链式HTTPS代理$https://35.198.241.84:443
+ladder.easedays.com#SG 链式HTTPS代理$https://4.193.133.242:443
+ladder.easedays.com#SG 链式HTTPS代理$https://52.187.116.36:443
 ladder.easedays.com#HK 链式HTTPS代理$https://221.126.247.53:22
 ladder.easedays.com#HK 链式HTTPS代理$https://38.55.192.122:443
-ladder.easedays.com#HK 链式HTTPS代理$https://43.154.249.2:443
-ladder.easedays.com#JP 链式HTTPS代理$https://210.236.6.162:443
+ladder.easedays.com#HK 链式HTTPS代理$https://38.76.140.254:8443
 ladder.easedays.com#JP 链式HTTPS代理$https://210.236.6.168:443
+ladder.easedays.com#JP 链式HTTPS代理$https://210.236.6.165:443
 ladder.easedays.com#JP 链式HTTPS代理$https://210.236.6.164:443
-ladder.easedays.com#US 链式HTTPS代理$https://146.189.217.231:443
+ladder.easedays.com#US 链式HTTPS代理$https://192.126.96.110:443
 ladder.easedays.com#US 链式HTTPS代理$https://146.189.216.139:443
-ladder.easedays.com#US 链式HTTPS代理$https://146.189.216.138:443
+ladder.easedays.com#US 链式HTTPS代理$https://146.189.217.231:443
