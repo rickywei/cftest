@@ -1,46 +1,35 @@
-# Edgetunnel 链式 HTTPS 代理自动优选与定时更新
+# Edgetunnel 链式 SOCKS5 代理自动优选与定时更新
 
-基于 **GitHub Actions** 每天定时自动从公网代理源抓取 HTTPS 代理，利用 [check.socks5.cmliussss.net](https://check.socks5.cmliussss.net/) 进行高并发连通性、纯净度及延迟检测，筛选出 **TW、SG、HK、JP、US 各 3 个**（共 15 个）高纯净度、低延迟的优质落地代理，并输出为符合 **Edgetunnel / Cloudflare Worker 自定义优选节点** 规范的列表文件。
+基于 **GitHub Actions** 每天定时自动从公网代理源抓取 SOCKS5 代理，利用 [check.socks5.cmliussss.net](https://check.socks5.cmliussss.net/) 进行高并发连通性、真实出口地区、纯净度及延迟测速，遵循 **“延迟优先（Low Latency First）”** 原则筛选出 **TW、SG、HK、JP、US 各 3 个** 极低延迟且稳定的优质落地代理，并输出为符合 **Edgetunnel / Cloudflare Worker 自定义优选节点** 规范的列表文件。
 
 ---
 
 ## 📌 项目特性
 
-1. **定时自动化**：通过 GitHub Actions 每天北京时间 **08:00**（UTC 00:00）准时自动运行并提交。
-2. **多重纯净度校验**：
-   - 接入 [check.socks5.cmliussss.net](https://check.socks5.cmliussss.net/) 进行落地验证。
-   - 严格过滤已知滥用（`is_abuser`）、Bogon、恶意节点。
-   - 优先选择并加权住宅家宽（`is_datacenter: false`）与高匿名度（`elite`）代理。
-3. **真实地区校准**：以测试接口实际出口归属地（`exit.country_code`）为准，杜绝虚假标注。
-4. **延迟排序**：同等高纯净度级别下，按真实响应延迟（`responseTime`）从低到高选取前 3 个。
-5. **历史节点回退**：自动读取上一天的有效节点，若当天源中某国数量不足，自动保留历史可用节点。
-6. **无缝对接 Edgetunnel**：输出格式与 `bestcf.pages.dev` 优选格式完全一致，直接兼容链式代理语法。
+1. **定时自动化**：通过 GitHub Actions 每天北京时间 **19:30**（UTC 11:30）准时自动运行并提交。
+2. **延迟优先调度（解决 AI 对话卡顿）**：
+   - 彻底摒弃单纯追求 IP 纯净度而牺牲速度的逻辑，以 **真实响应延迟（responseTime）** 为核心排序指标。
+   - 延迟相近区间（<=100ms）内自动优先选择高纯净度与家宽节点。
+3. **真实地区校准与有效性过滤**：
+   - 接入 [check.socks5.cmliussss.net](https://check.socks5.cmliussss.net/) 验证真实出口（`exit.country_code`）。
+   - 严格过滤 Bogon 等无效内网 IP。
+4. **历史节点回退**：自动读取上一天的有效节点，若当天源中某国数量不足，自动保留历史可用节点。
+5. **无缝对接 Edgetunnel**：输出格式与 `bestcf.pages.dev` 优选格式完全一致，直接兼容链式代理语法。
 
 ---
 
 ## 📄 输出格式示例 (`proxies.txt`)
 
 ```text
-ladder.easedays.com#TW 链式HTTPS代理$https://114.33.6.158:443
-ladder.easedays.com#TW 链式HTTPS代理$https://211.72.236.159:443
-ladder.easedays.com#TW 链式HTTPS代理$https://47.243.181.85:42532
-ladder.easedays.com#SG 链式HTTPS代理$https://47.129.55.159:443
-ladder.easedays.com#SG 链式HTTPS代理$https://165.22.60.108:443
-ladder.easedays.com#SG 链式HTTPS代理$https://35.198.241.84:443
-ladder.easedays.com#HK 链式HTTPS代理$https://221.126.247.53:22
-ladder.easedays.com#HK 链式HTTPS代理$https://38.55.192.122:443
-ladder.easedays.com#HK 链式HTTPS代理$https://43.154.249.2:443
-ladder.easedays.com#JP 链式HTTPS代理$https://210.236.6.162:443
-ladder.easedays.com#JP 链式HTTPS代理$https://210.236.6.168:443
-ladder.easedays.com#JP 链式HTTPS代理$https://210.236.6.164:443
-ladder.easedays.com#US 链式HTTPS代理$https://146.189.217.231:443
-ladder.easedays.com#US 链式HTTPS代理$https://146.189.216.139:443
-ladder.easedays.com#US 链式HTTPS代理$https://146.189.216.138:443
+ladder.easedays.com#US 链式SOCKS5代理$socks5://162.120.16.210:1080
+ladder.easedays.com#US 链式SOCKS5代理$socks5://209.50.255.91:1080
+ladder.easedays.com#HK 链式SOCKS5代理$socks5://8.217.224.41:1081
+ladder.easedays.com#JP 链式SOCKS5代理$socks5://43.165.133.188:1081
 ```
 
 - `ladder.easedays.com`：前置 Cloudflare 优选域名 / 反代域名。
-- `#TW 链式HTTPS代理`：客户端显示的节点地区备注。
-- `$https://...`：用于 Edgetunnel 转发流量的真实落地 HTTPS 出口代理。
+- `#US 链式SOCKS5代理`：客户端显示的节点地区备注。
+- `$socks5://...`：用于 Edgetunnel 转发流量的真实落地 SOCKS5 出口代理。
 
 ---
 
