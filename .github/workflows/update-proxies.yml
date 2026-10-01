@@ -48,3 +48,9 @@ jobs:
             git commit -m "chore: 每日自动更新优选代理 $(date -u +'%Y-%m-%d %H:%M:%S UTC') [skip ci]"
             git push
           fi
+
+      - name: Purge jsDelivr CDN Cache
+        run: |
+          echo "刷新 jsDelivr 缓存..."
+          curl -s https://purge.jsdelivr.net/gh/rickywei/cftest@main/proxies.txt || true
+
