@@ -41,6 +41,9 @@ ladder.easedays.com#JP 链式SOCKS5代理$socks5://43.165.133.188:1081
 ```text
 https://cdn.jsdelivr.net/gh/你的GitHub用户名/你的仓库名@main/proxies.txt
 ```
+> **注意**：每次 GitHub Actions 更新后均会自动触发 jsDelivr 全球边缘缓存刷新。如需手动即时刷新，可直接访问：
+> `https://purge.jsdelivr.net/gh/你的GitHub用户名/你的仓库名@main/proxies.txt`
+
 
 ### 选项 2：使用 GitHub Raw 链接
 ```text

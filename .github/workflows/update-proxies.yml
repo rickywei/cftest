@@ -51,6 +51,9 @@ jobs:
 
       - name: Purge jsDelivr CDN Cache
         run: |
-          echo "刷新 jsDelivr 缓存..."
-          curl -s https://purge.jsdelivr.net/gh/rickywei/cftest@main/proxies.txt || true
+          echo "正在主动刷新 jsDelivr CDN 缓存..."
+          curl -s -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/proxies.txt"
+          curl -s -i "https://purge.jsdelivr.net/gh/${{ github.repository }}/proxies.txt"
+          echo "jsDelivr CDN 缓存刷新完成。"
+
 
