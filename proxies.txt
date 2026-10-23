@@ -1,16 +1,15 @@
-# Edgetunnel 优选节点列表 - 自动生成于 2026-10-22T16:04:25.781Z
+# Edgetunnel 优选节点列表 - 自动生成于 2026-10-23T15:56:38.554Z
 ladder.easedays.com#TW 链式HTTPS代理$https://114.33.6.158:443
-ladder.easedays.com#TW 链式HTTPS代理$https://107.167.191.95:8443
 ladder.easedays.com#TW 链式HTTPS代理$https://211.72.236.159:443
-ladder.easedays.com#SG 链式SOCKS5代理$socks5://140.245.46.125:1080
-ladder.easedays.com#SG 链式SOCKS5代理$socks5://143.198.90.221:1088
-ladder.easedays.com#SG 链式SOCKS5代理$socks5://8.219.69.210:443
-ladder.easedays.com#HK 链式SOCKS5代理$socks5://52.128.241.106:1080
-ladder.easedays.com#HK 链式SOCKS5代理$socks5://52.128.241.108:1080
-ladder.easedays.com#HK 链式SOCKS5代理$socks5://183.87.145.150:2080
-ladder.easedays.com#JP 链式SOCKS5代理$socks5://58.89.82.209:1080
-ladder.easedays.com#JP 链式SOCKS5代理$socks5://103.100.158.115:10809
-ladder.easedays.com#JP 链式SOCKS5代理$socks5://101.36.104.46:10808
-ladder.easedays.com#US 链式SOCKS5代理$socks5://142.54.226.214:4145
-ladder.easedays.com#US 链式SOCKS5代理$socks5://199.102.105.242:4145
-ladder.easedays.com#US 链式SOCKS5代理$socks5://142.54.231.38:4145
+ladder.easedays.com#SG 链式SOCKS5代理$socks5://43.134.39.221:10000
+ladder.easedays.com#SG 链式HTTPS代理$https://174.138.27.116:443
+ladder.easedays.com#SG 链式HTTPS代理$https://143.198.192.178:443
+ladder.easedays.com#HK 链式SOCKS5代理$socks5://43.245.199.34:1080
+ladder.easedays.com#HK 链式SOCKS5代理$socks5://123.58.219.171:10808
+ladder.easedays.com#HK 链式SOCKS5代理$socks5://112.121.173.84:1080
+ladder.easedays.com#JP 链式SOCKS5代理$socks5://210.172.216.185:1080
+ladder.easedays.com#JP 链式HTTPS代理$https://103.127.242.229:7000
+ladder.easedays.com#JP 链式SOCKS5代理$socks5://172.105.192.212:9080
+ladder.easedays.com#US 链式SOCKS5代理$socks5://107.174.30.92:1080
+ladder.easedays.com#US 链式SOCKS5代理$socks5://67.201.33.10:25283
+ladder.easedays.com#US 链式SOCKS5代理$socks5://172.245.108.219:11080
